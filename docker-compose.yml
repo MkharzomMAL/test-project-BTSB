@@ -4,17 +4,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - db
     ports:
       - 8080:80
-
-  web_db:
-    image: mysql:5.7.22
-    environment:
-      MYSQL_DATABASE: web_DB
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
     volumes:
-      - ./storage/dbdata:/var/lib/mysql
-    ports:
-      - 33063:3306
+      - '.:/var/www/html'
+
+  db:
+      image: mysql:5.6
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: web_db
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+      volumes:
+        - db-data:/var/lib/mysql
+
+  volumes:
+    db-data:
