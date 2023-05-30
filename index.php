@@ -1,17 +1,43 @@
 <?php
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header('Location: home.php');
+    exit();
+}
+
+require_once './src/config/config.php';
+
+// $message = '';
+
+// if (isset($_POST['login'])) {
+//     $username = $_POST['username'];
+//     $password = $_POST['password'];
+
+//     $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
+//     $stmt->bind_param('s', $username);
+//     $stmt->execute();
+//     $result = $stmt->get_result();
+//     $user = $result->fetch_assoc();
+
+//     if ($user && password_verify($password, $user['password'])) {
+//         $_SESSION['username'] = $user['username'];
+//         header('Location: home.php');
+//         exit();
+//     } else {
+//         $message = 'Invalid username or password.';
+//     }
+// }
 
 ?>
 
-
 <!DOCTYPE html>
-<!---Coding By CoderGirl | www.codinglabweb.com--->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login & Registration Form | CoderGirl</title>
-  <!---Custom CSS File--->
+  <title>BTSB TEST Project</title>
   <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
@@ -34,6 +60,8 @@
     <div class="registration form">
       <header>Signup</header>
       <form action="#">
+        <input type="text" placeholder="Enter your full name">
+        <input type="text" placeholder="Enter your Address">
         <input type="text" placeholder="Enter your email">
         <input type="password" placeholder="Create a password">
         <input type="password" placeholder="Confirm your password">
