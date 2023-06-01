@@ -10,7 +10,3 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-INSERT INTO users (username, password, email) VALUES
-    ('john_doe', 'password123', 'john@example.com'),
-    ('jane_smith', 'secret456', 'jane@example.com');
