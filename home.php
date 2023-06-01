@@ -15,6 +15,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 $stmt->close();
+mysqli_close($db);
 ?>
 
 <!DOCTYPE html>
